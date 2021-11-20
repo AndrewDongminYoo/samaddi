@@ -1,74 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import AppLoading from 'expo-app-loading';
-import * as Font from 'expo-font';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { ThemeProvider } from '@react-navigation/native';
-import { FontAwesome } from '@expo/vector-icons';
-import { theme } from './theme';
-
-function cacheImages(images) {
-  return images.map(image => {
-    if (typeof image === 'string') {
-      return Image.prefetch(image);
-    } else {
-      return Asset.fromModule(image).downloadAsync();
-    }
-  });
-}
-
-function cacheFonts(fonts) {
-  return fonts.map(font => Font.loadAsync(font));
-}
-
-const customFonts = {
-  'BlackHanSans': require('../assets/fonts/BlackHanSans-Regular.ttf'),
-  'NotoSansRegular': require('../assets/fonts/NotoSansKR-Regular.otf'),
-  'NotoSansBold': require('../assets/fonts/NotoSansKR-Bold.otf')
-}
+import {StatusBar} from 'expo-status-bar';
+import {ThemeProvider} from "react-native-elements";
+import AssetsProvider from "./contexts/Assets";
+import {NavigationContainer} from '@react-navigation/native';
+import {theme} from './theme';
 
 export default function App() {
 
-  const [isReady, setIsReady] = useState(false);
-
-  const _loadAssets = async () => {
-    const imageAssets = cacheImages([
-      require('../assets/splash.png'),
-      require('../assets/logo.png'),
-      require('../assets/icon.png'),
-      require('../assets/graphic.png')
-    ]);
-    const fontAssets = cacheFonts([
-      FontAwesome.font,
-      customFonts
-    ]);
-    await Promise.all([...imageAssets, ...fontAssets]);
-  }
-
-
-
-  return isReady ? (
-    <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
-    </ThemeProvider>
-  ) : (
-    <AppLoading
-      startAsync={_loadAssets}
-      onFinish={() => setIsReady(true)}
-      onError={console.warn}
-    />
-  )
+    return (
+        <ThemeProvider theme={theme}>
+            <AssetsProvider>
+                <StatusBar style="auto"/>
+            </AssetsProvider>
+        </ThemeProvider>
+    )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
