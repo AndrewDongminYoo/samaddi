@@ -26,19 +26,19 @@ const AssetsContext = createContext({
 
 const AssetsProvider = ({ children }) => {
 
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [value, setValue] = useState(false);
 
     const _loadAssets = async () => {
         const fonts = {
-            'BlackHanSans': require('../assets/fonts/BlackHanSans-Regular.ttf'),
-            'NotoSansRegular': require('../assets/fonts/NotoSansKR-Regular.otf'),
-            'NotoSansBold': require('../assets/fonts/NotoSansKR-Bold.otf')
+            'BlackHanSans': require('../../assets/fonts/BlackHanSans-Regular.ttf'),
+            'NotoSansRegular': require('../../assets/fonts/NotoSansKR-Regular.otf'),
+            'NotoSansBold': require('../../assets/fonts/NotoSansKR-Bold.otf')
         }
         const imageAssets = cacheImages([
-            require('../assets/splash.png'),
-            require('../assets/logo.png'),
-            require('../assets/icon.png'),
-            require('../assets/graphic.png')
+            require('../../assets/splash.png'),
+            require('../../assets/logo.png'),
+            require('../../assets/icon.png'),
+            require('../../assets/graphic.png')
         ]);
         const fontAssets = cacheFonts([
             FontAwesome.font,
@@ -47,14 +47,14 @@ const AssetsProvider = ({ children }) => {
         await Promise.all([...imageAssets, fontAssets]);
     };
 
-    return isLoaded ? (
+    return value ? (
         <AssetsContext.Provider value={value}>
             {children}
         </AssetsContext.Provider>
     ) : (
         <AppLoading
             startAsync={_loadAssets}
-            onFinish={() => setIsLoaded(true)}
+            onFinish={() => setValue(true)}
             onError={console.warn}
         />
     )
