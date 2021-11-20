@@ -22,6 +22,12 @@ function cacheFonts(fonts) {
   return fonts.map(font => Font.loadAsync(font));
 }
 
+const customFonts = {
+  'BlackHanSans': require('../assets/fonts/BlackHanSans-Regular.ttf'),
+  'NotoSansRegular': require('../assets/fonts/NotoSansKR-Regular.otf'),
+  'NotoSansBold': require('../assets/fonts/NotoSansKR-Bold.otf')
+}
+
 export default function App() {
 
   const [isReady, setIsReady] = useState(false);
@@ -35,10 +41,7 @@ export default function App() {
     ]);
     const fontAssets = cacheFonts([
       FontAwesome.font,
-      require('../assets/fonts/NotoSansKR-Regular.otf'),
-      require('../assets/fonts/BlackHanSans-Regular.ttf'),
-      require('../assets/fonts/NotoSansKR-Bold.otf'),
-      require('../assets/fonts/NotoSansKR-Medium.otf')
+      customFonts
     ]);
     await Promise.all([...imageAssets, ...fontAssets]);
   }
