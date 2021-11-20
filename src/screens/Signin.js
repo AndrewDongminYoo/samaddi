@@ -1,7 +1,5 @@
 import React from 'react';
 import {useEffect, useState, useRef, useContext} from 'react';
-import styled from 'styled-components/native'
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Image, Input, Button} from '../components';
 import {images} from '../utils/images';
@@ -48,7 +46,7 @@ const Signin = ({navigation}) => {
     }, [email, password, errorMessage])
 
 
-    const _handleEmagilChange = email => {
+    const _handleEmailChange = email => {
         const changedEmail = removeWhitespace(email);
         setEmail(changedEmail);
         setErrorMessage(
@@ -83,8 +81,8 @@ const Signin = ({navigation}) => {
                     label="Email"
                     plcaeholder="Email"
                     value={email}
-                    onChangeText={_handleEmagilChange}
-                    onSubmitEditing={() => passwordRef.current.focus()}
+                    onChangeText={_handleEmailChange}
+                    onSubmitEditing={() => passwordRef.current?.focus()}
                     returnKeyType="next"
                 />
                 <Input

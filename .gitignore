@@ -3,7 +3,9 @@ node_modules/
 .expo-shared/
 dist/
 .idea/
-package-lock.json/
+package-lock.json
+yarn.lock
+yarn-error.log
 
 npm-debug.*
 *.jks
