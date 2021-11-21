@@ -2,11 +2,13 @@ import React from 'react';
 import {useEffect, useState, useRef, useContext} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Image, Input, Button} from '../components';
-import {images} from '../utils/images';
 import {validateEmail, removeWhitespace} from '../utils/common';
 import {Alert} from 'react-native';
 import {login} from '../utils/firebase';
+import logo from '../../assets/logo.png'
 import {ProgressContext, UserContext} from '../contexts';
+import styled from 'styled-components/native'
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 
 const Container = styled.View`
@@ -59,6 +61,7 @@ const Signin = ({navigation}) => {
     };
 
     const _handleLoginButtonPress = async () => {
+        console.log("login")
         try {
             spinner.start();
             const user = await login({email, password});
@@ -76,7 +79,7 @@ const Signin = ({navigation}) => {
             extraScrollHeight={20}
         >
             <Container insets={insets}>
-                <Image url={images.logo} imageStyle={{borderRadius: 8}}/>
+                <Image url={logo} imageStyle={{borderRadius: 8}}/>
                 <Input
                     label="Email"
                     plcaeholder="Email"

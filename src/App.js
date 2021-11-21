@@ -1,17 +1,23 @@
 import React from 'react';
 import {StatusBar} from 'expo-status-bar';
-import {ThemeProvider} from "react-native-elements";
-import AssetsProvider from "./contexts/Assets";
-import {NavigationContainer} from '@react-navigation/native';
+import {ThemeProvider} from "styled-components/native";
+import Navigator from "./navigatior";
 import {theme} from './theme';
+
+import {ProgressProvider, UserProvider, AssetsProvider} from "./contexts";
 
 export default function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <AssetsProvider>
-                <StatusBar style="auto"/>
-            </AssetsProvider>
+            <UserProvider>
+                <ProgressProvider>
+                    <AssetsProvider>
+                        <StatusBar barStyle="auto"/>
+                        <Navigator/>
+                    </AssetsProvider>
+                </ProgressProvider>
+            </UserProvider>
         </ThemeProvider>
     )
 }

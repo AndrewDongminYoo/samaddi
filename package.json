@@ -108,6 +108,7 @@
     "expo-web-browser": "~10.0.3",
     "firebase": "^9.5.0",
     "lottie-react-native": "4.0.3",
+    "moment": "^2.29.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -116,6 +117,8 @@
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-get-random-values": "~1.7.0",
+    "react-native-gifted-chat": "^0.16.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-maps": "0.28.0",
     "react-native-pager-view": "5.4.6",
     "react-native-reanimated": "~2.2.0",
@@ -128,9 +131,13 @@
     "react-native-web": "0.17.1",
     "react-native-webview": "11.13.0",
     "sentry-expo": "^4.0.0",
+    "styled-components": "^5.3.3",
     "unimodules-app-loader": "~3.0.0",
     "unimodules-image-loader-interface": "~6.1.0",
     "unimodules-task-manager-interface": "~7.0.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "prop-types": "^15.7.2"
+  }
 }

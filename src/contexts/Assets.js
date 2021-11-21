@@ -44,7 +44,7 @@ const AssetsProvider = ({ children }) => {
             FontAwesome.font,
             fonts
         ]);
-        await Promise.all([...imageAssets, fontAssets]);
+        await Promise.all([...imageAssets, ...fontAssets]);
     };
 
     return value ? (

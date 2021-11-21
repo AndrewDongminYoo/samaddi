@@ -4,10 +4,10 @@ import styled from 'styled-components/native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Image, Input, Button} from '../components';
 import {validateEmail, removeWhitespace} from '../utils/common';
-import {images} from '../utils/images';
+import logo from '../../assets/logo.png';
 import {Alert} from 'react-native';
 import {signup} from '../utils/firebase';
-import {ProgressContext} from '../contexts';
+import {ProgressContext, UserContext} from '../contexts';
 
 const Container = styled.View`
   justify-content: center;
@@ -37,7 +37,7 @@ const Signup = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [errorMessage, setErrorMessage] = useState('');
     const [disabled, setDisabled] = useState(true);
-    const [photoUrl, setPhotoUrl] = useState(images.logo)
+    const [photoUrl, setPhotoUrl] = useState(logo)
 
     const didMountRef = useRef();
     const emailRef = useRef();
@@ -46,7 +46,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (didMountRef.current) {
-            let _errorMessage = '';
+            let _errorMessage;
             if (!name) {
                 _errorMessage = 'Please Enter your name.';
             } else if (!validateEmail(email)) {

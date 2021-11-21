@@ -13,13 +13,13 @@ const Container = styled.View`
   padding: 0 20px;
 `;
 
-const Profile = () => {
+const MyPage = () => {
 
     const {dispatch} = useContext(UserContext);
     const {spinner} = useContext(ProgressContext);
     const theme = useContext(ThemeContext);
     const user = getCurrentUser();
-    const [photoUrl, setphotoUrl] = useState(user.photoUrl);
+    const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
     const _handleLogoutButtonPress = async () => {
         try {
             spinner.start();
@@ -36,7 +36,7 @@ const Profile = () => {
         try {
             spinner.start();
             const updatedUser = await updateUserPhoto(url);
-            setphotoUrl(updatedUser.photoUrl)
+            setPhotoUrl(updatedUser.photoUrl)
         } catch (err) {
             Alert.alert('Photo Error: ', err.message);
         } finally {
@@ -63,4 +63,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default MyPage;

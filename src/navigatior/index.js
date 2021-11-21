@@ -5,7 +5,7 @@ import MainStackNavigator from './MainStackNavigator';
 import {Spinner} from '../components';
 import {ProgressContext, UserContext} from '../contexts';
 
-const Navigation = () => {
+const Navigator = () => {
 
     const {inProgress} = useContext(ProgressContext)
     const {user} = useContext(UserContext)
@@ -18,4 +18,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation;
+export default Navigator;

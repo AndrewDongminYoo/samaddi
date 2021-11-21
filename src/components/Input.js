@@ -17,7 +17,7 @@ const Label = styled.Text`
 `;
 
 const StyledTextInput = styled.TextInput.attrs(({ theme }) => ({
-  placeholerTextColor: theme.inputPlaceholder,
+  placeholderTextColor: theme.inputPlaceholder,
 }))`
     background-color: ${({ theme, editable }) =>
     editable ? theme.background : theme.inputDisabledBackground};
@@ -37,7 +37,7 @@ const Input = forwardRef(
       onChangeText,
       onSubmitEditing,
       onBlur,
-      plcaeholder,
+      placeholder,
       isPassword,
       returnKeyType,
       maxLength,
@@ -60,7 +60,7 @@ const Input = forwardRef(
             setIsFocused(false);
             onBlur();
           }}
-          plcaeholder={plcaeholder}
+          plcaeholder={placeholder}
           secureTextEntry={isPassword}
           returnKeyType={returnKeyType}
           maxLength={maxLength}
@@ -87,9 +87,7 @@ Input.propTypes = {
   onChangeText: propTypes.func.isRequired,
   onSubmitEditing: propTypes.func.isRequired,
   onBlur: propTypes.func,
-  onChangeText: propTypes.func,
-  onSubmitEditing: propTypes.func,
-  plcaeholder: propTypes.string,
+  placeholder: propTypes.string,
   isPassword: propTypes.bool,
   disabled: propTypes.bool,
   returnKeyType: propTypes.oneOf(['done', 'next']),

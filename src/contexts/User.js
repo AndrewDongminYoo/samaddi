@@ -12,6 +12,7 @@ const UserProvider = ({ children }) => {
     setUser({ email, uid });
   };
   const value = { user, dispatch };
+  console.log(value);
   return (
     <UserContext.Provider value={value} >
       {children}
